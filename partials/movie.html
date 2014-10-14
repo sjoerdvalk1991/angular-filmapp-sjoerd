@@ -1,0 +1,11 @@
+<section ng-controller="movieController as movieCtrl">
+<h1>Movie info</h1>
+    <div ng-show="movieCtrl.movie">
+	    <h2> {{movieCtrl.movie.title}}</h2> 
+	    <img ng-src="{{movieCtrl.movie.cover}}" alt="{{movieCtrl.movie.title}} Cover Image">
+	    <p>{{movieCtrl.movie.plot}}</p>
+	     <ul>
+			<li ng-repeat="actor in movieCtrl.movie.actors">{{actor.actor_name}}</li>
+		</ul>
+    </div>
+</section>
