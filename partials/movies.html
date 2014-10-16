@@ -1,10 +1,12 @@
 <section ng-controller="moviesController as movies">
-	<div ng-controllers="genreController as genres">
-      <select ng-model="selectedGenre" ng-options="genres for genres in genres"></select>
+  	<select ng-model="showGenre">
+    	<option value=" " selected>All</option>
+   		<option ng-repeat="genre in movies.genres" value="{{genre}}">{{genre}}</option>
+	</select>
   </div>
 	<input type="text" ng-model="searchFilter" placeholder="Search..."/>
 	<h1>Movies</h1>
-	<div ng-repeat="movie in movies.moviesList | filter: searchFilter">
+	<div ng-repeat="movie in movies.moviesList | filter: searchFilter | orderBy:sortorder | filter:showGenre">
 	  <h2> {{movie.title}}</h2> 
 	  <img ng-src="{{movie.cover}}" alt="{{movie.title}} Cover Image">
 	  <p>{{movie.plot}}</p>

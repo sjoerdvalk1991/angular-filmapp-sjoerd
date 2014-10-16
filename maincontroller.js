@@ -33,10 +33,20 @@ var moviesController = function($http){
 var _this = this;
 _this.nameFilter = null;
 _this.moviesList = [];
+_this.genres = [];
 
   $http.get('http://dennistel.nl/movies').success(function(data){
     _this.moviesList = data;
     console.log(data);
+
+    angular.forEach(_this.moviesList, function(value, genres){
+        if(_this.genres.indexOf(value.genres) == -1)
+        {
+            _this.genres.push(value.genres);
+            console.log(value.genres);
+            console.log(_this.genres);
+        }
+    }); 
 
   });
 
