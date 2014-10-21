@@ -33,26 +33,25 @@ app.config(function($routeProvider) {
 
 var moviesController = function(movieAPI){
 
-  var self = this;
+  var _this = this;
 
-  this.movieAPI = movieAPI;
-  this.nameFilter = null;
-  this.moviesList = [];
-  this.genres = [];
+  _this.movieAPI = movieAPI;
+  _this.nameFilter = null;
+  _this.moviesList = [];
+  _this.genres = [];
 
   movieAPI.getMovies().success(function(data){
-    self.moviesList = data;
+    _this.moviesList = data;
   });
 
-  setTimeout(function(){
-    self.search('bla');
-  }, 5000);
+
 
   this.search = function(term){
     movieAPI.search(term).success(function(data){
-      self.moviesList = data.slice(1);
+      _this.moviesList = data.slice(1);
     });
   }
+
 
 };
 
@@ -63,17 +62,18 @@ app.controller('moviesController', moviesController);
 
 
 
-var movieController = function($http, $routeParams) {
+var movieController = function(movieAPI, id) {
+  console.log(movieAPI);
   var _this = this;
+  _this.movieAPI = movieAPI;
   _this.movie = [];
 
-  console.log('movie');
-  $http.get('http://dennistel.nl/movies/'+$routeParams.id).success(function(data){
-      _this.movie = data;
-      console.log(data);
+  _this.movieAPI.getMovie(id).success(function(data){
+    _this.movie = data;
   });
-
 };
+
+movieController.$inject = ['moviesAPIservice']
 
 app.controller('movieController', movieController);
 
