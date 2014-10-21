@@ -1,19 +1,21 @@
-(function() {
+angular.module('movieApp.services', []).
+factory('moviesAPIservice', function($http) {
 
-    var app = angular.module('movieApp');
+    var movieAPI = {};
 
-    var movieAPI = function($http) {
-      this.$http = $http;
+    movieAPI.getMovies = function() {
+      return $http({
+        // method: 'JSONP',
+        url: 'http://dennistel.nl/movies'
+      });
+    }
 
+    movieAPI.search = function(term) {
+      return $http({
+        // method: 'JSONP',
+        url: 'http://dennistel.nl/movies'
+      });
+    }
 
-    };
-
-    movieAPI.$inject = ['$http'];
-
-
-    movieAPI.prototype.movies = function (){
-      var _this = this;
-      return _this.$http.get('http://dennistel.nl/movies');
-    };
-
-  });
+    return movieAPI;
+});
