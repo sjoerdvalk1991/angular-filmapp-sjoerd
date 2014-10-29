@@ -85,6 +85,11 @@ h1 {
 
 }
 
+.plot {
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
 h2 {
 	background-color: #801515;
 	color: #fff;

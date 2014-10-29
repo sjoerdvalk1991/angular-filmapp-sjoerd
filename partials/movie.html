@@ -3,7 +3,7 @@
     <div class="swipe" ng-show="movieCtrl.movie">
 	    <h2> {{movieCtrl.movie.title}}</h2> 
 	    <img ng-src="{{movieCtrl.movie.cover}}" alt="{{movieCtrl.movie.title}} Cover Image">
-	    <p>{{movieCtrl.movie.plot}}</p>
+	    <p class="plot">{{movieCtrl.movie.plot}}</p>
 	     <ul>
 			<li ng-repeat="actor in movieCtrl.movie.actors"><img ng-src="{{actor.url_photo}}">
 				{{actor.actor_name}} 
