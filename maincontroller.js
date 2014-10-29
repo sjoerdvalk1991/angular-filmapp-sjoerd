@@ -117,7 +117,8 @@ _this.loader = function(){
     setTimeout(function(){
       document.getElementById('splashscreen').classList.add('hide');
     }, 2000);
-  
+
+    
   }
 _this.loader();
 }
