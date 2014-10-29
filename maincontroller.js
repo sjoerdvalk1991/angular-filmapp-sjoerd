@@ -33,7 +33,9 @@ app.config(function($routeProvider) {
 
 var moviesController = function(movieAPI){
 
-  var _this = this;
+  document.querySelector('.nav').classList.remove('expand');
+
+  _this = this;
 
   _this.movieAPI = movieAPI;
   _this.nameFilter = null;
@@ -67,11 +69,14 @@ var movieController = function(movieAPI, id) {
   var _this = this;
   _this.movieAPI = movieAPI;
   _this.movie = [];
+ 
 
   _this.movieAPI.getMovie(id).success(function(data){
     _this.movie = data;
   });
 };
+        
+
 
 movieController.$inject = ['moviesAPIservice']
 
@@ -80,9 +85,49 @@ app.controller('movieController', movieController);
 
 var aboutCtrl = function() {
   var _this = this;
+  document.querySelector('.nav').classList.remove('expand');
   _this.message = 'About this app';
   };
 
 app.controller('aboutCtrl', aboutCtrl);
+
+var gestureControl = function(){
+
+var _this = this;
+    
+ _this.expand = function() {
+      console.log('test');
+      document.querySelector('.nav').classList.toggle('expand');
+    }
+
+ elementPage = document.querySelector('body');
+      Hammer(elementPage).on("swipeleft", function(event) {
+        document.querySelector('.nav').classList.remove('expand');
+      
+  });
+  elementPage = document.querySelector('body');
+   Hammer(elementPage).on("swiperight", function(event) {
+    document.querySelector('.nav').classList.toggle('expand');
+        
+      
+  });
+
+_this.loader = function(){
+  document.getElementById('splashscreen').classList.add('showsplashscreen');
+    setTimeout(function(){
+      document.getElementById('splashscreen').classList.add('hide');
+    }, 2000);
+  
+  }
+_this.loader();
+}
+
+
+
+
+app.controller('gestureControl', gestureControl);
+
+
+
 
 

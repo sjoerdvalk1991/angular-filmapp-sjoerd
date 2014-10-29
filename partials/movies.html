@@ -1,15 +1,13 @@
-<section ng-controller="moviesController as movies">
-  	<select ng-model="showGenre">
-    	<option value=" " selected>All</option>
-   		<option ng-repeat="genre in movies.genres" value="{{genre}}">{{genre}}</option>
-	</select>
-  </div>
-	<input type="text" ng-model="searchFilter" placeholder="Search..."/>
+<section class="ptxxl" ng-controller="moviesController as movies">
 	<h1>Movies</h1>
-	<div ng-repeat="movie in movies.moviesList | filter: searchFilter | orderBy:sortorder | filter:showGenre">
+  	    <label class="lbl">
+        	Search: <input class="label" type="text" name="" value="" placeholder="Search for movies" ng-model="search.title">
+    	</label>
+  </div>
+	
+	<div class="film" ng-repeat="movie in movies.moviesList | filter:search">
 	  <h2> {{movie.title}}</h2> 
 	  <img ng-src="{{movie.cover}}" alt="{{movie.title}} Cover Image">
-	  <p>{{movie.plot}}</p>
-	  <a href="#/movies/{{movie.id}}">Informatie</a>
+	  <a class="detail styled-button-9" href="#/movies/{{movie.id}}">Informatie</a>
 	</div>
 </section>

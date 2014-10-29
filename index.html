@@ -1,13 +1,30 @@
 <!DOCTYPE html>
-<html ng-app="movieApp">
+<html class="bg-orange" ng-app="movieApp">
   <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="icomoon.css">
   </head>
-  <body>
-    <a href="#/about">about</a>
-    <a href="#/movies">movies</a>
-    <ng-view></ng-view>
+  <body class="bg-orange">
+    <div ng-controller="gestureControl as gesCtrl">
+      <section id="splashscreen">
+          <div id="spinner">
+        </div>
+          <div class="container">
+          <p>De laatse data word opgehaald</p>
+        </div>
+      </section>
+      <span class="main-menu icon-menu" ng-click="gesCtrl.expand();"></span>
+      <nav class="nav">
+        <li><a href="#/about">about</a></li>
+        <li><a href="#/movies">movies</a></li>
+      </nav>
     </div>
+    <section class="style">
+    <ng-view></ng-view>
+    </section>
+    </div>
+    <script src="hammer.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.underscore.min.js"></script>
